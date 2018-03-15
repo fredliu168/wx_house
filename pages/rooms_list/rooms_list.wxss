@@ -13,10 +13,34 @@
   line-height: 1.42857143;
   color: #333;
 }
+.sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.pre_price{
+  font-size: 13px;
+  color:  #F23911;
+  float: right;
+}
+
+.price{
+  font-size: 14px;
+  color:  #F23911;
+  float: right;
+}
+
+.h2 {
+  display: block;
+  font-size: 15px;
+  margin: 0px;
+  color:  #333;
+  padding-top: 4px;
+}
 
 .h3 {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin: 0px;
   color: rgba(0, 0, 0, 0.41);
   padding-top: 4px;

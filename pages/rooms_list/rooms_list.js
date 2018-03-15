@@ -74,7 +74,9 @@ Page({
    */
   onPullDownRefresh: function () {
     console.log('onPullDownRefresh');
-  this.LoadRoomsList(1); 
+    this.data.rooms_list = []; 
+    this.LoadRoomsList(1); 
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -111,7 +113,7 @@ Page({
        console.log(res.data)
        wx.hideLoading();
 
-       vm.data.rooms_list = []; 
+       //vm.data.rooms_list = []; 
 
        var rooms_list = []
 
@@ -121,6 +123,10 @@ Page({
        
        for (let i = 0; i < length; ++i) {
          
+         if (rooms_list[i].house_name == null)
+           rooms_list[i].house_name = ''
+
+
          if (rooms_list[i].image.length != 0)
            rooms_list[i].image_s = vm.data.apiUrl + 'image/' + rooms_list[i].image[0].name;
          else
