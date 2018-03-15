@@ -1,4 +1,6 @@
 // pages/rooms_list/rooms_list.js
+var util = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -7,15 +9,34 @@ Page({
   data: {
     apiUrl: 'https://weixin.qzcool.com/',
     rooms_list: [],//房间列表 
-    message:''
+    screenHeight: 0,
+    screenWidth: 0,
+    imagewidth: 0,//缩放后的宽  
+    imageheight: 0,//缩放后的高 
   },
-
+  imageLoad: function (e) {
+    var imageSize = util.imageUtil(e)
+    this.setData({
+      imagewidth: imageSize.imageWidth,
+      imageheight: imageSize.imageHeight
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
     var vm = this;
+
+    wx.getSystemInfo({
+      success: function (res) {
+        vm.setData({
+          screenHeight: res.windowHeight,
+          screenWidth: res.windowWidth,
+        });
+      }
+    });
+    
     vm.LoadRoomsList(1) //加载房间数据
   },
 
@@ -100,7 +121,7 @@ Page({
          if (rooms_list[i].image.length != 0)
            rooms_list[i].image_s = vm.data.apiUrl + 'image/' + rooms_list[i].image[0].name;
          else
-           rooms_list[i].image_s = ''       
+           rooms_list[i].image_s = vm.data.apiUrl + 'image/default'      
        }
 
 

@@ -14,7 +14,7 @@
               <text>房价</text>
             </view>
           </view>
-          <image class="col-xs-4" style="" src="{{room.image_s}}" mode='aspectFit'></image>
+          <image class="col-xs-4" style="width: {{screenWidth*0.3}}px; height: {{screenWidth*0.2}}px;" src="{{room.image_s}}" mode='aspectFit'></image>
         </view>
       </navigator>
     </view>
