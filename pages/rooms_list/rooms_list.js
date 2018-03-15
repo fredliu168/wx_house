@@ -9,6 +9,7 @@ Page({
   data: {
     apiUrl: 'https://weixin.qzcool.com/',
     rooms_list: [],//房间列表 
+    curent_page_index:1,//当前页面
     screenHeight: 0,
     screenWidth: 0,
     imagewidth: 0,//缩放后的宽  
@@ -36,7 +37,7 @@ Page({
         });
       }
     });
-    
+
     vm.LoadRoomsList(1) //加载房间数据
   },
 
@@ -72,14 +73,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log('onPullDownRefresh');
+  this.LoadRoomsList(1); 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.data.curent_page_index ++;
+    this.LoadRoomsList(this.data.curent_page_index); 
   },
 
   /**
