@@ -1,0 +1,26 @@
+<!--pages/rooms_list/rooms_list.wxml-->
+<view class="container">
+ 
+  <block wx:for="{{rooms_list}}" wx:for-item="room" wx:if="{{index>0}}" wx:key="room">
+
+    <view class="itme">
+      <navigator url="">
+        <view class="row">
+          <view class="col-xs-8">
+            <view class="h2">
+              <text>{{room.title}}</text>
+            </view>
+            <view class="h3">
+              <text>房价</text>
+            </view>
+          </view>
+          <image class="col-xs-4" style="" src="{{room.image_s}}" mode='aspectFit'></image>
+        </view>
+      </navigator>
+    </view>
+
+
+  </block>
+
+
+</view>
