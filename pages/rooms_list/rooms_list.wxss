@@ -27,20 +27,20 @@
 }
 
 .pre_price{
-  font-size: 13px;
+  font-size: 14px;
   color:  #F23911;
   float: right;
 }
 
 .price{
-  font-size: 14px;
+  font-size: 15px;
   color:  #F23911;
   float: right;
 }
 
 .h2 {
   display: block;
-  font-size: 15px;
+  font-size: 17px;
   margin: 0px;
   color:  #333;
   padding-top: 4px;
@@ -48,7 +48,7 @@
 
 .h3 {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0px;
   color: rgba(0, 0, 0, 0.41);
   padding-top: 4px;

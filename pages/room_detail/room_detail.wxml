@@ -52,7 +52,7 @@
 </view>
 
 
-<div class="article pro-desc pro-desc-layer">
+<div class="article pro-desc ">
 <view class='h2'>房源描述</view>
 <text>{{room_info.mark}}</text>
 
