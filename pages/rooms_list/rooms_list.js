@@ -9,18 +9,22 @@ Page({
   data: {
     apiUrl: 'https://weixin.qzcool.com/',
     rooms_list: [],//房间列表 
+    banner_image:'https://weixin.qzcool.com/banner',
     curent_page_index:1,//当前页面
-    screenHeight: 0,
+    screenHeight: 0, 
     screenWidth: 0,
     imagewidth: 0,//缩放后的宽  
     imageheight: 0,//缩放后的高 
   },
   imageLoad: function (e) {
-    var imageSize = util.imageUtil(e)
+    var imageSize = util.imageUtil(e);
+    console.log(imageSize);
     this.setData({
       imagewidth: imageSize.imageWidth,
       imageheight: imageSize.imageHeight
-    })
+    });
+
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,6 +32,10 @@ Page({
   onLoad: function (options) {
 
     var vm = this;
+
+    vm.setData({
+      banner_image: vm.data.banner_image 
+    });
 
     wx.getSystemInfo({
       success: function (res) {
@@ -139,8 +147,7 @@ Page({
        console.log(vm.data.rooms_list)
 
        vm.setData({
-         rooms_list: vm.data.rooms_list,
-         message:'hello world'
+         rooms_list: vm.data.rooms_list, 
        }); 
      }
      })

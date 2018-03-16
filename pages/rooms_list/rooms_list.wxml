@@ -1,6 +1,22 @@
 <!--pages/rooms_list/rooms_list.wxml-->
+ <view style='margin-right:1px;width:100%;'>
+   <image  style="width:{{screenWidth*0.98}}px;height:{{screenWidth*0.45}}px;padding-left:4px; background-color: #fff;   " src="{{banner_image}}"  bindload="imageLoad" mode='aspectFit'></image>
+ </view>
+
+
+<view class="h-nav">
+          
+            <a href="https://m.anjuke.com/qz/sale/" data-soj="anjuke_home">
+            <i class="home-icon h-esf"></i>买房        </a>
+            <a href="https://m.anjuke.com/qz/rent/" data-soj="anjuke_home">
+            <i class="home-icon h-zf"></i>租房        </a> 
+             
+    </view>
+
 <view class="container">
  
+
+
   <block wx:for="{{rooms_list}}" wx:for-item="room" wx:if="{{index>0}}" wx:key="room">
 
     <view class="itme">
@@ -18,7 +34,7 @@
             </view> 
             
           </view>
-          <image class="col-xs-4" style="width: {{screenWidth*0.3}}px; height: {{screenWidth*0.2}}px;" src="{{room.image_s}}" mode='aspectFit'></image>
+          <image class="col-xs-4" style="width: {{screenWidth*0.3}}px; height: {{screenWidth*0.2}}px;" src="{{room.image_s}}"  bindload="imageLoad" mode='aspectFit'></image>
         </view>
       </navigator>
     </view>
