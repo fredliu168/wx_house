@@ -1,0 +1,35 @@
+<!--pages/rooms_list/rooms_list.wxml-->
+ 
+
+ 
+
+<view class="container">
+  
+
+  <block wx:for="{{rooms_list}}" wx:for-item="room" wx:if="{{index>0}}" wx:key="room">
+
+    <view class="itme">
+      <navigator url="/pages/room_detail/room_detail?roomid={{room.sha_identity}}">
+        <view class="row">
+          <view class="col-xs-8">
+            <view class="h2">
+              <text>{{room.title}}</text>
+            </view>
+            <view class="h3">
+              <text>{{room.house_name}} {{room.area}}m<text class="sup">2</text>   </text>
+            </view>
+            <view class="h3">
+             发布时间: {{room.post_time}} <text class="price"> {{room.price}}元/月</text> 
+            </view> 
+            
+          </view>
+          <image class="col-xs-4" style="width: {{screenWidth*0.3}}px; height: {{screenWidth*0.2}}px;" src="{{room.image_s}}"  bindload="imageLoad" mode='aspectFit'></image>
+        </view>
+      </navigator>
+    </view>
+
+
+  </block>
+
+
+</view>
