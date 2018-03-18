@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/rooms_list/rooms_list",
     "pages/room_detail/room_detail",
-    "pages/rent_room_list/rent_room_list"
+    "pages/rent_room_list/rent_room_list",
+    "pages/rent_room_detail/rent_room_detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

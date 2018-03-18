@@ -1,0 +1,96 @@
+<view class="container">
+
+<view class="row">
+<view class="h2">
+     <text style='padding-left:10px; display: block; '>{{room_info.title}}</text>
+     
+</view>   
+
+<text class='ax-txt'>温馨提示：房源来自网络，在售状态请与经纪人确认</text>
+</view>
+ 
+
+<view class="article pro-detail">
+
+
+
+<label class="label">
+     价格: <text class ='price'>{{room_info.price}}元/月</text>
+</label> 
+ 
+<label class="label">
+     面积: <text> {{room_info.area}}平方</text>
+</label> 
+
+<label class="label">
+     楼层: <text> {{room_info.floor}}楼 (共{{room_info.total_floor}}层)</text>
+</label> 
+
+
+<label class="label">
+     朝向: <text> {{room_info.orientation}}</text>
+</label> 
+
+<label class="label">
+     类型: <text> {{room_info.type}}</text>
+</label> 
+<label class="label">
+     小区: <text> {{room_info.house_name}}</text>
+</label> 
+<label class="label">
+     位置: <text> {{room_info.position}}</text>
+</label> 
+<label class="label">
+     发布时间: <text> {{room_info.post_time}}</text>
+</label> 
+
+</view>
+
+
+<div class="article pro-desc ">
+<view class='h2'>房源描述</view>
+<text>{{room_info.mark}}</text>
+
+
+
+ <block wx:for="{{room_info.image}}" wx:for-item="image" wx:if="{{index>=0}}" wx:key="image">
+
+
+
+ <image src="{{image}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  mode='aspectFit'  bindload="imageLoad"></image>
+
+ </block>
+
+</div>
+
+<div class="tel-float-seat">
+<div class="j-fix-tel fix-ph-x" style="z-index: 140;" >
+   
+     <view style='float:left;font-size:12px;'> 
+     
+      <view style='padding-top:5px;'><image src='{{room_info.avatar}}'  class='circle' style="width:40px;height:40px; border-radius: 50%;" mode='aspectFit'></image></view>
+     </view>
+ 
+
+	    <view style='float:left;font-size:12px;padding-left:5px;'>
+      
+      <view style='display:block;padding-top:10px;'>
+       <text> {{room_info.name}}</text>
+      </view>
+
+      <view  style='display:block;'>
+       <text> {{room_info.company_name}}</text> 
+      </view>
+     
+     
+
+      </view>
+	     
+	   
+       <view style='float:right;width:120px;height:100%; display: inline-block;vertical-align: middle;text-align: center; font-size: 14px;background-color: #62ab00;color:  #FFFF;padding-top:10px; ' bindtap="Call">   电话咨询 
+       
+       </view>
+       </div>
+          	</div>
+</view>
+

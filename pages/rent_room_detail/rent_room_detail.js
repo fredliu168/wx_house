@@ -1,6 +1,5 @@
+// pages/rent_room_detail/rent_room_detail.js
 var util = require('../../utils/util.js')
-
-// pages/room_detail/room_detail.js
 Page({
 
   /**
@@ -8,21 +7,12 @@ Page({
    */
   data: {
     apiUrl: 'https://weixin.qzcool.com/',
-    room_info:null,//房间信息 
+    room_info: null,//房间信息 
     screenHeight: 0,
     screenWidth: 0,
     imagewidth: 0,//缩放后的宽  
     imageheight: 0,//缩放后的高 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-    console.log(options.roomid);
-    this.loadRoomInfo(options.roomid)
-  }, 
   imageLoad: function (e) {
     var imageSize = util.imageUtil(e);
     console.log(imageSize);
@@ -30,24 +20,18 @@ Page({
       imagewidth: imageSize.imageWidth,
       imageheight: imageSize.imageHeight
     });
-  }, 
-  Call:function() {
-    console.log('makePhoneCall');
-    var vm = this;
-
-    wx.makePhoneCall({
-      phoneNumber: vm.data.room_info.phone, //此号码并非真实电话号码，仅用于测试  
-      success: function () {
-        console.log("拨打电话成功！")
-      },
-      fail: function () {
-        console.log("拨打电话失败！")
-      }
-    })
   },
-  loadRoomInfo: function (roomid){
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+    console.log(options.roomid);
+    this.loadRoomInfo(options.roomid);
+  }, 
+  loadRoomInfo: function (roomid) {
     var vm = this;
-    var url = vm.data.apiUrl + 'room/' + roomid;
+    var url = vm.data.apiUrl + 'rent-room/' + roomid;
     console.log(url)
 
     wx.showLoading({
@@ -65,11 +49,11 @@ Page({
         wx.hideLoading();
 
         var room = res.data['value'];
-        
+
         const length = room.image.length;
 
         for (let i = 0; i < length; ++i) {
-        
+
           room.image[i] = vm.data.apiUrl + 'image/' + room.image[i].name;
         }
 
@@ -81,10 +65,10 @@ Page({
 
         vm.setData({
           room_info: room,
-        }); 
-        }});
+        });
+      }
+    });
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -117,7 +101,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
+  
   },
 
   /**

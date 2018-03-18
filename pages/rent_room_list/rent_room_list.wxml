@@ -9,7 +9,7 @@
   <block wx:for="{{rooms_list}}" wx:for-item="room" wx:if="{{index>0}}" wx:key="room">
 
     <view class="itme">
-      <navigator url="/pages/room_detail/room_detail?roomid={{room.sha_identity}}">
+      <navigator url="/pages/rent_room_detail/rent_room_detail?roomid={{room.sha_identity}}">
         <view class="row">
           <view class="col-xs-8">
             <view class="h2">
