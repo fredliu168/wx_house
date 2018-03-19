@@ -1,7 +1,8 @@
-/* pages/rooms_list/rooms_list.wxss */
+/* pages/room_detail/room_detail.wxss */
+
 .container {
   font-size: 20px;
-  background-color: #ddd;
+  background-color: #fff;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -14,46 +15,15 @@
   color: #333;
 }
 
-.h-nav {
-    padding: 3px 10px 15px 10px;
-    font-size: 13px;
-    background-color: #fff;
-    overflow: hidden; 
-}
-
-.sup {
-    vertical-align: super;
-    font-size: smaller;
-}
-
-.pre_price{
-  font-size: 14px;
-  color:  #F23911;
-  float: right;
-}
-
-.price{
-  font-size: 15px;
-  color:  #F23911;
-  float: right;
-}
 
 .h2 {
+  flex-direction: flex-start;
   display: block;
   font-size: 17px;
   margin: 0px;
   color:  #333;
   padding-top: 4px;
 }
-
-.h3 {
-  display: block;
-  font-size: 14px;
-  margin: 0px;
-  color: rgba(0, 0, 0, 0.41);
-  padding-top: 4px;
-}
-
 
 
 .itme {
@@ -68,6 +38,7 @@
 }
 
 .row {
+   width: 100%;
   display: block;
 }
 
@@ -76,8 +47,135 @@
   width: 67%;
 }
 
+.ax-txt{ 
+ 
+  background: #fff; 
+  font-size: 14px;
+  color: #999;
+  padding: 0 10px;
+}
+
+
+.pro-detail {
+    padding: 10px;
+}
+.article {
+    -webkit-box-sizing: border-box;
+    background: #fff;
+    padding: 10px;
+    width: 100%;
+}
+
+.pro-detail label {
+    width: 49%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    color: #333;
+}
+
+
 .col-xs-4 {
   float: left;
+  font-size: 13px;
   position: relative;
   min-height: 1px;
+}
+
+.sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.pre_price{
+  font-size: 15px;
+  color:  #F23911;
+ 
+}
+
+.price{
+  font-size: 15px;
+  color:  #F23911;
+  
+}
+
+.circle{
+    width: 50px;
+    height: 50px;
+    border: 0 solid #ffffff;
+    border-radius: 50px;
+    box-shadow: 4px 1px 1px #cccccc;
+
+}
+
+
+.pro-desc-layer {
+    margin-top: 10px;
+}
+
+.pro-desc {
+    padding: 10px 10px 15px 10px;
+    font-size: 14px;
+    line-height: 24px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.tel-float-seat {
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+  height: 50px;
+}
+.j-fix-tel {
+  width: 100%;
+    z-index: 130;
+    position: fixed;
+    border-top: 1px solid #e6e6e6;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    background: #fff;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.tel-float-layer {
+    display: -webkit-box;
+    width: 100%;
+    position: relative;
+    height: 50px;
+    background: #62ab00;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+.tel-debris {
+    background-color: #62ab00!important;
+}
+div {
+    display: block;
+}
+.tel-float-layer .ask-debris {
+    width: 100px;
+    height: 50px;
+    background: #fff;
+}
+.tel-float-layer .ask-debris {
+    color: #333;
+    line-height: 35px;
+    padding-right: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

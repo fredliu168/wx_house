@@ -31,6 +31,8 @@ Page({
    */
   onLoad: function (options) {
 
+   console.log('rooms_list onLoad');
+   
     var vm = this;
 
     vm.setData({

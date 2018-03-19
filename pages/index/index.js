@@ -12,8 +12,8 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      //url: '../rooms_list/rooms_list'
-      url: '../rent_room_list/rent_room_list'
+      url: '../rooms_list/rooms_list'
+      //url: '../rent_room_list/rent_room_list'
     })
   },
   onLoad: function () {
@@ -24,8 +24,8 @@ Page({
       })
 
       wx.navigateTo({
-        //url: '../rooms_list/rooms_list'
-        url:'../rent_room_list/rent_room_list'
+        url: '../rooms_list/rooms_list'
+        //url:'../rent_room_list/rent_room_list'
       })
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回

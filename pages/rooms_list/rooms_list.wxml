@@ -4,12 +4,10 @@
  </view>
 
 
-<view class="h-nav">
-          
-            <a href="https://m.anjuke.com/qz/sale/" data-soj="anjuke_home">
-            <i class="home-icon h-esf"></i>买房        </a>
-            <a href="https://m.anjuke.com/qz/rent/" data-soj="anjuke_home">
-            <i class="home-icon h-zf"></i>租房        </a> 
+<view class="h-nav" style='height:50px;width:100%'>
+    <navigator url="../rent_room_list/rent_room_list" open-type="navigate" hover-class="other-navigator-hover" style='float:left'> <view class="h-esf" style='height:50px;width:50px'> <view style='padding-top:45px;padding-left:10px;'>买房</view></view> </navigator>      
+            
+    <navigator url="../rent_room_list/rent_room_list"   style='float:left' open-type="navigate" hover-class="other-navigator-hover"> <view class="h-zf" style='height:50px;width:50px'> <view style='padding-top:45px;padding-left:10px;'>租房 </view></view> </navigator>    
              
     </view>
 
