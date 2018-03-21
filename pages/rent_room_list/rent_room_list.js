@@ -10,6 +10,7 @@ Page({
     apiUrl: 'https://weixin.qzcool.com/',
     rooms_list: [],//房间列表 
     banner_image: 'https://weixin.qzcool.com/banner',
+    search_value:'',
     curent_page_index: 1,//当前页面
     screenHeight: 0,
     screenWidth: 0,
@@ -21,11 +22,11 @@ Page({
         'originalText': '排序',
         'active': false,
         'child': [
-          { 'id': 1, 'text': '按价格从低到高' },
-          { 'id': 2, 'text': '按价格从高到低' },
-          { 'id': 3, 'text': '按面积从小到大' },
-          { 'id': 4, 'text': '按面积从大到小' },
-          { 'id': 5, 'text': '按发布时间' }
+          { 'id': 1, 'text': '价格从低到高' },
+          { 'id': 2, 'text': '价格从高到低' },
+          { 'id': 3, 'text': '面积从小到大' },
+          { 'id': 4, 'text': '面积从大到小' },
+          { 'id': 5, 'text': '发布时间' }
         ],
         'type': 0
       },
@@ -48,7 +49,7 @@ Page({
           { 'id': 1, 'text': '一房' },
           { 'id': 2, 'text': '两房' },
           { 'id': 3, 'text': '三房' },
-          { 'id': 3, 'text': '四房' },
+          { 'id': 4, 'text': '四房' },
         ],
         'type': 0
       },
@@ -130,12 +131,46 @@ Page({
   
   },
 
+  searchValueInput: function (e) {
+    var value = e.detail.value;
+    console.log(value);
+    this.setData({
+      searchValue: value,
+    });
+    // if (!value && this.data.productData.length == 0) {
+    //   this.setData({
+    //     centent_Show: false,
+    //   });
+    // }
+    this.data.search_value = value;
+    this.data.curent_page_index = 1
+
+    this.data.rooms_list=[];
+    
+
+    if (!value || value.length == 0)
+    {
+      this.LoadRoomsList(1)
+    }else
+    {
+      this.search_data(value, 1);
+    }
+
+
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     
     console.log('onPullDownRefresh');
+    this.data.curent_page_index = 1;
+    this.data.search_value = '';
+    this.setData({
+      searchValue: '',
+    });
+    
     this.data.rooms_list = [];
     this.LoadRoomsList(1);
     wx.stopPullDownRefresh();
@@ -147,7 +182,14 @@ Page({
    */
   onReachBottom: function () {
     this.data.curent_page_index++;
-    this.LoadRoomsList(this.data.curent_page_index); 
+ 
+
+    if (!this.data.search_value || this.data.search_value.length == 0) {
+      this.LoadRoomsList(this.data.curent_page_index)
+    } else {
+      this.search_data(this.data.search_value, this.data.curent_page_index);
+    }
+
   },
 
   /**
@@ -166,6 +208,7 @@ Page({
       return e;
     });
     newTabTxt[index].active = !that.data.tabTxt[index].active;
+    console.log(data);
     this.setData({
       tabTxt: data
     })
@@ -189,7 +232,9 @@ Page({
         delete that.data.searchParam[index];
       }
       else {
-        data[index].text = e.target.dataset.txt;
+
+        var len = e.target.dataset.txt.length;
+        data[index].text = len < 5 ? e.target.dataset.txt: e.target.dataset.txt.slice(0,5)+'...';
         //更改删除条件
         that.data.searchParam[index] = data[index].text;
       }
@@ -201,15 +246,20 @@ Page({
       tabTxt: data
     })
     console.log(that.data.searchParam);
-
+    console.log(that.data.tabTxt);
 
   },
 
-   //加载房间
-   LoadRoomsList: function (page) {
+  search_data:function(key_word,page){
+    //查询数据
     var vm = this;
-    var url = vm.data.apiUrl + 'rent-house/' + page;
+    var url = vm.data.apiUrl + 'rent-search-house/' + encodeURI(key_word)+'/' + page;
+    this.get_data(url);
+  },
 
+  get_data:function(url){
+    //请求网络数据
+    var vm = this;
     wx.showLoading({
       title: '加载中',
     });
@@ -254,6 +304,14 @@ Page({
         });
       }
     })
+  },
+
+   //加载房间
+   LoadRoomsList: function (page) {
+    var vm = this;
+    var url = vm.data.apiUrl + 'rent-house/' + page;
+
+    this.get_data(url);
 
   }
 })

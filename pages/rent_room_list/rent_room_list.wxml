@@ -3,7 +3,7 @@
   <view class="search">  
     <view class="df search_arr">  
       <icon class="searchcion" size='20' type='search'></icon>  
-      <input class=""  placeholder="请输入小区名称或者地址" value="{{searchValue}}"/>  
+      <input class=""  placeholder="请输入小区名称或者地址" value="{{searchValue}}" bindconfirm="searchValueInput" confirm-type="搜索"	/>  
     </view>  
   </view>  
  

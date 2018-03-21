@@ -9,7 +9,9 @@
 
 <text class='ax-txt'>温馨提示：房源来自网络，在售状态请与经纪人确认</text>
 </view>
- 
+ <view class="row">
+ <text class='ax-txt'>联系我时, 请说是在微信小程序'德化房产在线'看到的,谢谢!</text>
+</view>
 
 <view class="article pro-detail">
 
