@@ -1,6 +1,5 @@
-// pages/rent_room_list/rent_room_list.js
+// pages/sell_room_list/sell_room_list.js
 var util = require('../../utils/util.js')
-
 Page({
 
   /**
@@ -10,13 +9,13 @@ Page({
     apiUrl: 'https://weixin.qzcool.com/',
     rooms_list: [],//房间列表 
     banner_image: 'https://weixin.qzcool.com/banner',
-    search_value:'',
     curent_page_index: 1,//当前页面
-    cond:'',//查询条件
     screenHeight: 0,
     screenWidth: 0,
     imagewidth: 0,//缩放后的宽  
-    imageheight: 0,//缩放后的高 ,
+    imageheight: 0,//缩放后的高 
+    search_value: '',
+    cond: '',//查询条件
     tabTxt: [
       {
         'text': '排序',
@@ -36,10 +35,10 @@ Page({
         'originalText': '价格',
         'active': false,
         'child': [
-          { 'id': 1, 'text': '1000元以下' },
-          { 'id': 2, 'text': '1000元-2000元' },
-          { 'id': 3, 'text': '2000元-3000元' },
-          { 'id': 4, 'text': '3000元以上' }
+          { 'id': 1, 'text': '30万以下' },
+          { 'id': 2, 'text': '30万-60万' },
+          { 'id': 3, 'text': '60万-100万' },
+          { 'id': 4, 'text': '100万以上' }
         ], 'type': 0
       },
       {
@@ -67,9 +66,8 @@ Page({
       }
     ],
     searchParam: []
-
   },
-  
+
   imageLoad: function (e) {
     var imageSize = util.imageUtil(e);
     console.log(imageSize);
@@ -80,58 +78,6 @@ Page({
 
 
   },
-
-  suo: function (e) {
-    // wx.navigateTo({
-    //   url: '../search/search',
-    // })
-  },  
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-   var vm = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        vm.setData({
-          screenHeight: res.windowHeight,
-          screenWidth: res.windowWidth,
-        });
-      }
-    });
-    
-    this.LoadRoomsList(1);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
   searchValueInput: function (e) {
     var value = e.detail.value;
     console.log(value);
@@ -144,80 +90,30 @@ Page({
     //   });
     // }
     this.data.search_value = value;
-    this.data.curent_page_index = 1
+    this.data.curent_page_index = 1 
+    this.data.rooms_list = []; 
 
-    this.data.rooms_list=[];
-    
-
-    if (!value || value.length == 0)
-    {
+    if (!value || value.length == 0) {
       this.LoadRoomsList(1)
-    }else
-    {
+    } else {
       this.search_data(value, 1);
     }
 
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-    console.log('onPullDownRefresh');
+  init_data:function(){
+  //初始化数据
     this.data.curent_page_index = 1;
-    this.data.search_value = '';
-    this.data.cond ='';
-
-    //初始化
-    for (var index in this.data.tabTxt) { 
-      this.data.tabTxt[index].type = 0;
-      this.data.tabTxt[index].text = this.data.tabTxt[index].originalText;
-    }
-
-    this.setData({
-      tabTxt: this.data.tabTxt,
-    }); 
-
-    this.setData({
-      searchValue: '',
-    });
-    
-    this.data.rooms_list = [];
-    this.LoadRoomsList(1);
-    wx.stopPullDownRefresh();
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-    this.data.curent_page_index++; 
-
-    if (this.data.search_value.length != 0) {
-
-      this.search_data(this.data.search_value, this.data.curent_page_index);
-    
-    } else if (this.data.cond.length != 0)
-    {
-      this.get_data_by_cond(this.data.cond,this.data.curent_page_index)
-    }else
-    {
-      this.LoadRoomsList(this.data.curent_page_index)
-    }
+    this.data.rooms_list = []; 
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  search_data: function (key_word, page) {
+    //查询数据
+   
+    var url = this.data.apiUrl + 'sell-search-house/' + encodeURI(key_word) + '/' + page;
+    this.get_data(url);
   },
-  
+
   filterTab: function (e) {
     var that = this;
     var data = JSON.parse(JSON.stringify(that.data.tabTxt));
@@ -253,11 +149,10 @@ Page({
       else {
 
         var len = e.target.dataset.txt.length;
-        data[index].text = len < 5 ? e.target.dataset.txt: e.target.dataset.txt.slice(0,5)+'...';
+        data[index].text = len < 5 ? e.target.dataset.txt : e.target.dataset.txt.slice(0, 5) + '...';
         //更改删除条件
         that.data.searchParam[index] = data[index].text;
       }
-
 
     }
 
@@ -267,40 +162,136 @@ Page({
     console.log(that.data.searchParam);
     console.log(that.data.tabTxt);
 
-    var cond = '' ; //条件信息
-    for (var index in that.data.tabTxt)
-    {
+    var cond = ''; //条件信息
+    for (var index in that.data.tabTxt) {
       console.log(that.data.tabTxt[index]);
       cond += that.data.tabTxt[index].type + '_';
     }
 
-    cond = cond.slice(0, cond.length -1);
+    cond = cond.slice(0, cond.length - 1);
 
     that.data.cond = cond;
 
     that.data.curent_page_index = 1;
-    that.data.rooms_list=[];
+    that.data.rooms_list = [];
 
     console.log(cond);
-    that.get_data_by_cond(cond,1);
+    that.get_data_by_cond(cond, 1);
   },
-
-  get_data_by_cond:function(cond,page){
+  get_data_by_cond: function (cond, page) {
     //获取条件数据
     var vm = this;
-    var url = vm.data.apiUrl + 'rent-cond-house/' + cond + '/' + page;
+    var url = vm.data.apiUrl + 'sell-cond-house/' + cond + '/' + page;
     this.get_data(url);
   },
-
-  search_data:function(key_word,page){
-    //查询数据
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     var vm = this;
-    var url = vm.data.apiUrl + 'rent-search-house/' + encodeURI(key_word)+'/' + page;
-    this.get_data(url);
+
+    vm.setData({
+      banner_image: vm.data.banner_image
+    });
+
+    wx.getSystemInfo({
+      success: function (res) {
+        vm.setData({
+          screenHeight: res.windowHeight,
+          screenWidth: res.windowWidth,
+        });
+      }
+    });
+
+    vm.LoadRoomsList(1) //加载房间数据
   },
 
-  get_data:function(url){
-    //请求网络数据
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    console.log('onPullDownRefresh');
+    this.data.curent_page_index = 1;
+    this.data.search_value = '';
+    this.data.cond = '';
+    this.data.rooms_list = [];
+
+    //初始化
+    for (var index in this.data.tabTxt) {
+      this.data.tabTxt[index].type = 0;
+      this.data.tabTxt[index].text = this.data.tabTxt[index].originalText;
+    }
+
+    this.setData({
+      tabTxt: this.data.tabTxt,
+    });
+
+    this.setData({
+      searchValue: '',
+    });
+    this.LoadRoomsList(1);
+    wx.stopPullDownRefresh();
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    this.data.curent_page_index++;
+
+    if (this.data.search_value.length != 0) {
+
+      this.search_data(this.data.search_value, this.data.curent_page_index);
+
+    } else if (this.data.cond.length != 0) {
+      this.get_data_by_cond(this.data.cond, this.data.curent_page_index)
+    } else {
+      this.LoadRoomsList(this.data.curent_page_index)
+    }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  //加载房间
+  LoadRoomsList: function (page) {
+
+    var url = this.data.apiUrl + 'house/' + page; 
+    this.get_data(url); 
+
+  },
+  get_data: function (url) {
     var vm = this;
     wx.showLoading({
       title: '加载中',
@@ -346,14 +337,5 @@ Page({
         });
       }
     })
-  },
-
-   //加载房间
-   LoadRoomsList: function (page) {
-    var vm = this;
-    var url = vm.data.apiUrl + 'rent-house/' + page;
-
-    this.get_data(url);
-
   }
 })

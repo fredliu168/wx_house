@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/rooms_list/rooms_list",
+    "pages/index/index",
+    "pages/logs/logs", 
     "pages/room_detail/room_detail",
     "pages/rent_room_list/rent_room_list",
     "pages/rent_room_detail/rent_room_detail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/sell_room_list/sell_room_list"
   ],
   "window": {
     "backgroundTextStyle": "light",

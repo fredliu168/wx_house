@@ -1,0 +1,212 @@
+/* pages/rooms_list/rooms_list.wxss */
+.container {
+  font-size: 20px;
+  background-color: #ddd;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rpx 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.h-nav {
+    padding: 3px 10px 15px 10px;
+    font-size: 13px;
+    background-color: #fff;
+    overflow: hidden; 
+}
+
+.h-zf {
+    background: url(https://weixin.qzcool.com/source/rent_house.png) no-repeat;
+   background-size:45px 45px;
+}
+
+.h-esf {
+    background: url(https://weixin.qzcool.com/source/sell_house.png) no-repeat;
+    background-size:45px 45px;
+}
+
+ 
+
+.sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.pre_price{
+  font-size: 14px;
+  color:  #F23911;
+  float: right;
+}
+
+.price{
+  font-size: 15px;
+  color:  #F23911;
+  float: right;
+}
+
+.h2 {
+  display: block;
+  font-size: 17px;
+  margin: 0px;
+  color:  #333;
+  padding-top: 4px;
+}
+
+.h3 {
+  display: block;
+  font-size: 14px;
+  margin: 0px;
+  color: rgba(0, 0, 0, 0.41);
+  padding-top: 4px;
+}
+
+
+
+.itme {
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.row {
+  display: block;
+}
+
+.col-xs-8 {
+  float: left;
+  width: 67%;
+}
+
+.col-xs-4 {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+
+
+/*下拉菜单*/
+.cxj-menu {
+  background-color: #f5f5f5;
+  width: 750rpx;
+  height: 80rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 32rpx;
+}
+.cxj-menu .active image {
+  transform: rotate(180deg);
+  background: none;
+}
+.cxj-menu .active {
+  background-color: #fff;
+}
+.flex-view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.cxj-icon {
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.cxj-content {
+  width: 750rpx;
+  font-size: 28rpx;
+}
+
+.cxj-content-li {
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.cxj-tab-layout {
+  width: 750rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 180rpx;
+  z-index: 1;
+  border-bottom: solid 1px #eee;
+  height: 100%;
+  background-color: rgba(000,000,000,.5);
+  
+}
+
+.cxj-tab-layout .active {
+  color: #00aa14;
+}
+
+.cxj-tab-layout view {
+  width: 750rpx;
+  text-indent: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 1rpx solid #e7e7e7;
+  background-color:#ffffff;
+  
+}
+
+/*搜索*/
+.search{  
+  width: 100%;  
+}  
+.search_arr {  
+  border: 1px solid #d0d0d0;  
+  border-radius: 10rpx;  
+  margin-left: 10rpx;  
+  margin-right: 10rpx;  
+}  
+.search_arr input{  
+  margin-left: 60rpx;  
+  height: 60rpx;  
+  border-radius: 5px;  
+}  
+.bc_text {  
+  line-height: 68rpx;  
+  height: 68rpx;  
+  margin-top: 34rpx;  
+}  
+  
+.sousuo {  
+  margin-left: 15rpx;  
+  width: 15%;  
+  line-height: 150%;  
+  text-align: center;  
+  border: 1px solid #d0d0d0;  
+  border-radius: 10rpx;  
+}  
+.page_row{  
+  display: flex;  
+  flex-direction: row;
+  padding-top: 5px;  
+  padding-bottom: 5px;
+}  
+.searchcion {  
+  margin: 10rpx 10rpx 10rpx 10rpx;  
+  position: absolute;  
+  left:25rpx;  
+  z-index: 2;  
+  width: 20px;  
+  height: 20px;  
+  text-align: center;  
+} 

@@ -85,6 +85,7 @@ Page({
   onPullDownRefresh: function () {
     console.log('onPullDownRefresh');
     this.data.rooms_list = []; 
+    this.data.curent_page_index = 1;
     this.LoadRoomsList(1); 
     wx.stopPullDownRefresh();
   },
