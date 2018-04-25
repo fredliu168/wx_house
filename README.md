@@ -5,3 +5,8 @@
 
 接口修改为 https://w.qzcool.com/api/v1.0
 
+![小程序图片](/doc/wx1.jpg "小程序图片")
+
+![小程序图片](/doc/wx2.jpg "小程序图片")
+
+![小程序图片](/doc/wx3.jpg "小程序图片")
