@@ -13,7 +13,7 @@
 <view class="cxj-menu">
   <view class="flex-view{{item.active?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
     <text>{{item.text}}</text>
-    <image src="https:weixin.qzcool.com/source/arrow.png" class="cxj-icon"></image>
+    <image src="https://w.qzcool.com/api/v1.0/source/arrow.png" class="cxj-icon"></image>
   </view>
 </view>
 <!--条件选项栏-->

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    apiUrl: 'https://weixin.qzcool.com/',
+    apiUrl: 'https://w.qzcool.com/api/v1.0/',
     room_info: null,//房间信息 
     screenHeight: 0,
     screenWidth: 0,

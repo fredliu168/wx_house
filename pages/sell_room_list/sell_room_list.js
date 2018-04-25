@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    apiUrl: 'https://weixin.qzcool.com/',
+    apiUrl: 'https://w.qzcool.com/api/v1.0/',
     rooms_list: [],//房间列表 
-    banner_image: 'https://weixin.qzcool.com/banner',
+    banner_image: 'https://w.qzcool.com/api/v1.0/banner',
     curent_page_index: 1,//当前页面
     screenHeight: 0,
     screenWidth: 0,
